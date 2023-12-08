@@ -19,11 +19,14 @@ public class AppApplication implements CommandLineRunner{
 	}
 	@Override
     public void run(String... args) throws Exception {
-        String sql = "SELECT * from test";
-         
-        int rows = jdbcTemplate.update(sql);
-        if (rows > 0) {
-            System.out.println("A new row has been inserted--"+rows);
+        String sql = " DESC CARS ";
+        try {
+            jdbcTemplate.execute(sql);
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
         }
+        
+        
     }
 }
